@@ -1,0 +1,400 @@
+﻿<Window x:Class="monopoly.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:monopoly="clr-namespace:monopoly"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="788" Width="992">
+    <Grid Width="750" Height="750" HorizontalAlignment="Left" Margin="0,0,0,0" Name="mGrid" VerticalAlignment="Top">
+        <Grid.Background>
+            <ImageBrush ImageSource="imgs/taust2.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="98"/>
+            <RowDefinition/>
+            <RowDefinition Height="98"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="98"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="98"/>
+            <ColumnDefinition Width="1"/>
+        </Grid.ColumnDefinitions>
+        <Canvas x:Name="Kanvas" />
+        <Border Name="K20" BorderThickness="3" BorderBrush="DeepSkyBlue" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="0"  Grid.Row="0" />
+        <Border Name="K30" BorderThickness="3" BorderBrush="DeepSkyBlue" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="4"  Grid.Row="0" />
+        <Border Name="K00" BorderThickness="3" BorderBrush="DeepSkyBlue" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="4"  Grid.Row="2" />
+        <Border Name="K10" BorderThickness="3" BorderBrush="DeepSkyBlue" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="0"  Grid.Row="2" />
+        <Grid Name="TopEdge" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,0,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Border Name="K21" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K22" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K23" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K24" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K25" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K26" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K27" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="6" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K28" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="7" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K29" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="8" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+        </Grid>
+        <Grid Name="BottomEdge" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Border Name="K09" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K08" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K07" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K06" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K05" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K04" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K03" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="6" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K02" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="7" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K01" BorderThickness="3" BorderBrush="BlueViolet" Grid.Column="8" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+        </Grid>
+        <Grid Name="LeftEdge" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Width="98" Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Border Name="K19" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K18" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K17" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K16" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K15" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K14" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K13" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="6" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K12" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="7" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K11" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="8" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+        </Grid>
+        <Grid Name="RightEdge" Grid.Row="1" Grid.Column="4" Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Border Name="K31" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K32" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K33" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K34" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K35" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K36" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K37" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="6" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K38" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="7" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Border Name="K39" BorderThickness="3" BorderBrush="BlueViolet" Grid.Row="8" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+        </Grid>
+        <TextBox Name="fuk" Grid.Column="3" HorizontalAlignment="Left" Height="69" Margin="10,475,0,0" Grid.Row="1" TextWrapping="Wrap" Text=":(" VerticalAlignment="Top" Width="373" FontSize="48" FontFamily="Tahoma" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFC90F0F"/>
+        <TextBox Name="CCnr" Grid.Column="3" HorizontalAlignment="Left" Height="123" Margin="88,37,0,0" Grid.Row="1" TextWrapping="Wrap" Text=":(" VerticalAlignment="Top" Width="148" FontSize="48" FontFamily="Tahoma" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFC90F0F" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-45"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <TextBox Name="CHnr" Grid.Column="3" HorizontalAlignment="Left" Height="102" Margin="429,392,0,0" Grid.Row="1" TextWrapping="Wrap" Text=":(" VerticalAlignment="Top" Width="106" FontSize="48" FontFamily="Tahoma" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFC90F0F" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-45"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <TextBox Name="d1" Grid.Column="3" HorizontalAlignment="Left" Height="102" Margin="447,239,0,0" Grid.Row="1" TextWrapping="Wrap" Text=":(" VerticalAlignment="Top" Width="106" FontSize="48" FontFamily="Tahoma" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFC90F0F" RenderTransformOrigin="0.5,0.5" />
+        <TextBox Name="d2" Grid.Column="3" HorizontalAlignment="Left" Height="102" Margin="384,239,0,0" Grid.Row="1" TextWrapping="Wrap" Text=":(" VerticalAlignment="Top" Width="106" FontSize="48" FontFamily="Tahoma" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFC90F0F" RenderTransformOrigin="0.5,0.5" />
+        <TextBlock Name="Stats1"  Grid.Column="5" HorizontalAlignment="Left" Height="750" Margin="5,0,-77,0" Grid.RowSpan="3" TextWrapping="Wrap" Text=":O" VerticalAlignment="Top" Width="73" FontSize="12"/>
+        <TextBlock x:Name="Stats2"  Grid.Column="5" HorizontalAlignment="Left" Height="750" Margin="78,0,-229,0" Grid.RowSpan="3" TextWrapping="Wrap" Text=":O" VerticalAlignment="Top" Width="152" FontSize="12"/>
+    </Grid>
+</Window>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
