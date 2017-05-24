@@ -39,20 +39,25 @@ namespace monopoly
         private int[] cckaardid = new[] { 0, 10 };
         private int[] chkaardid = new[] { 0, 10, 11, 24, 39, 5 };
         private List<int> rolls;
+        private static Random rand = new Random();
 
         public MainWindow()
         {
-            System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-            dispatcherTimer.Tick += dispatcherTimer_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 0);
-            dispatcherTimer.Start();
+            //System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            //dispatcherTimer.Tick += Tick;
+            //dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 0);
+            //dispatcherTimer.Start();
             DataContext = this;
             _count = 0;
 
             InitializeComponent();
             CreatePlotList(mGrid);
-            PaintBox(asukoht);
+            //PaintBox(asukoht);
             Plots[asukoht].Stops++;
+        }
+        async void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            await Task.Run(() => Tick());
         }
 
         private static void CreatePlotList(Grid mgrid)
@@ -85,8 +90,11 @@ namespace monopoly
             }
         }
 
-        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        private void Tick()
         {
+            while (true)
+            {
+                
            // PaintBox(asukoht);
             var a1 = asukoht;
 
@@ -99,14 +107,18 @@ namespace monopoly
             Plots[asukoht].Stops++;
             _count++;
 
-            if (_count % 10000 == 0)
-            {
-            fuk.Text = _count.ToString();
-            CCnr.Text = pealminekaartCC.ToString();
-            CHnr.Text = pealminekaartCH.ToString();
-            d1.Text = rolls[0].ToString();
-            d2.Text = rolls[1].ToString();
-            Stats();
+                if (_count % 100000 == 0)
+                {
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        fuk.Text = _count.ToString();
+                        CCnr.Text = pealminekaartCC.ToString();
+                        CHnr.Text = pealminekaartCH.ToString();
+                        d1.Text = rolls[0].ToString();
+                        d2.Text = rolls[1].ToString();
+                        Stats();
+                    });
+                }
             }
         }
 
@@ -131,8 +143,6 @@ namespace monopoly
 
         private int KalkAsukoht(int asukoht)
         {
-            var rand = new Random();
-
             rolls = new List<int> { rand.Next(6) + 1, rand.Next(6) + 1 };
             rolls.ForEach(x => Sides[x]++);
 
@@ -154,6 +164,7 @@ namespace monopoly
             //Chance
             if (potentskoht == 7 || potentskoht == 22 || potentskoht == 36)
             {
+                pealminekaartCH = ++pealminekaartCH % 16;
                 /*
                 Advance to GO
                 Go to JAIL
@@ -183,17 +194,16 @@ namespace monopoly
                 if (pealminekaartCH == 9)
                     potentskoht -= 3;
 
-                pealminekaartCH = ++pealminekaartCH % 16;
             }
 
             //Community Chest
             if (potentskoht == 2 || potentskoht == 17 || potentskoht == 33)
             {
+                pealminekaartCC = ++pealminekaartCC % 16;
                 if (pealminekaartCC < 2)
                 {
                     potentskoht = cckaardid[pealminekaartCC];
                 }
-                pealminekaartCC = ++pealminekaartCC % 16;
             }
 
             if (potentskoht == 10)
